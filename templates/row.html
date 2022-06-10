@@ -1,0 +1,11 @@
+<td><a class="text-info text-decoration-none" href="/tournament/{{obj.Tournament.id}}">{{obj.Tournament.title}}</a></td>
+<td>{{obj.Tournament.tournament_date}}</td>
+<td>{{obj.Tournament.game}}</td>
+{% if obj.status == '00' %}
+    <td>Registered</td>
+{% else %}
+    <td>Register Unsuccessful</td>
+{% endif %}
+<td>{{obj.team_name}}</td>
+<td class = "d-none d-md-table-cell">{{obj.team_members}}</td>
+

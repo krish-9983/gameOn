@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-12 col-md-6 text-left">
+        {% if tournament.game %}
+        <p>Game : {{ tournament.game }}</p>
+        {% endif %}
+    </div>
+    <div class="col-12 col-md-6 text-left">
+        {% if tournament.tournament_date %}
+        <p>Date : {{ tournament.tournament_date }}</p>
+        {% endif %}
+    </div>
+    <div class="col-12 col-md-6 text-left">
+        {% if tournament.prize_pool %}
+        <p>Prize Pool : {{ tournament.prize_pool }}</p>
+        {% endif %}
+    </div>
+    <div class="col-12 col-md-6 text-left">
+        {% if tournament.entryleft %}
+        <p>Entry Left : {{ tournament.entryleft }}</p>
+        {% endif %}
+    </div>
+    <div class="col-12 col-md-6 text-left">
+        {% if tournament.last_date %}
+        <p>Registeration Ends On : {{ tournament.last_date }}</p>
+        {% endif %}
+    </div>
+    <div class="col-12">
+        {% if tournament.prize_pool %}
+        <p>1st Prize = {{ tournament.prize1 }} | 2nd Prize = {{ tournament.prize2 }} | 3rd Prize = {{ tournament.prize3 }}</p>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block head%}
+<style>
+    @media screen and (min-width : 769px) {
+    .heading_history {
+        font-size : 30px;
+        font-style : italic;
+}        
+    }
+    @media screen and (max-width : 768px) {
+    .heading_history {
+        font-size : 16px;
+
+}       
+    table {
+        font-size : 8px;
+    }
+    }
+
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+<div class="title py-3 text-center">
+<h1 class = "heading_history">Histroy of Tournaments Participations by you</h1>
+</div>
+{% if obj_list %}
+<table class="table table-dark table-striped-columns text-light mt-1 mt-lg-4 p-0">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tournament</th>
+            <th scope="col">Tournament Date</th>
+            <th scope="col">Game</th>
+            <th scope="col">Status</th>
+            <th scope="col">Team Name</th>
+            <th class = "d-none d-md-table-cell" scope="col">Team Members</th>            
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for obj in obj_list %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            {% include 'row.html' with obj=obj %}
+        </tr>
+        
+        {% endfor %}
+    </tbody>
+
+</table>
+{% else %}
+<h6 class = "text-center">No Tournament regetered :( </h6>
+{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container p-5 mt-5 rounded-3" style="background-color: #1414145e;">
+<div class='row'>
+<!--   <div class='col-md-12 order-md-2'>-->
+<!--      <p>-->
+<!--         <b>Tournament</b>:  {{ tournament.title }}-->
+<!--      </p>-->
+
+<!--</div>-->
+
+<div class='col-md-12'>
+   <h3>{{ tournament.title }}<br> <small>Entries Left : {{ tournament.entryleft }}</small></h3>
+
+   <form method='POST' class="py-3" action="./{{tournament.id}}" enctype="multipart/form-data">{% csrf_token %}
+
+
+
+      {% if tournament.team_size > 1 %}
+      {{ form.non_field_errors }}
+      <div class="fieldWrapper">
+         {{form.team_name.errors}}
+      <div class="mb-3 fw-bold">
+         <label for="team name" class="form-label" name="team_name">Team Name</label>
+         <input id="team name" type="text" class="form-control" aria-describedby="team name help" name="team_name">
+         <div id="team name help" class="form-text text-light">Team Name Must be Unique and does not allow symboles and special characters. '_' is Alowed.</div>
+       </div>
+      </div>
+      {% with ''|center:tournament.team_size as range %}
+      {% for i in range %}
+      {% if forloop.counter == 1 %}
+      <div class="mb-3">
+         <label for="ign{{forloop.counter}}" class="form-label" name="ign{{forloop.counter}}">* IN GAME NAME  #{{forloop.counter}} : </label>
+         <input id="ign{{forloop.counter}}" type="text" class="form-control" name="ign{{forloop.counter}}" required>
+       </div>
+       {% else %}
+       <div class="mb-3">
+         <label for="ign{{forloop.counter}}" class="form-label" name="ign{{forloop.counter}}">IN GAME NAME  #{{forloop.counter}} : </label>
+         <input id="ign{{forloop.counter}}" type="text" class="form-control" name="ign{{forloop.counter}}">
+       </div>
+       {% endif %}
+       {% endfor %}
+       {% endwith %}
+      {% else %}
+      <div class="mb-3">
+         <label for="ign" class="form-label" name="team_name">* IN GAME NAME : </label>
+         <input id="ign" type="text" class="form-control" name="team_name" required>
+       </div>
+      {% endif %}
+    <div class="text-center">
+      <button type='submit' class='btn btn-primary {{ btn_class }}'>{% if submit_btn %} {{ submit_btn }} {% else %}Register {% endif %}</button>
+</div>
+  </form>
+</div>
+
+</div>
+</div>
+
+
+
+
+{% endblock %}

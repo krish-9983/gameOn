@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-md-flex justify-content-around mt-4 ">
+    {% if request.user.is_staff %}
+    <div class="text-center text-md-left"><a href="/tournament/create" class="btn btn-primary">Create New Tournament</a></div>
+    {% endif %}
+        <form class="d-flex flex-row mt-3 m-md-0 mx-5 mx-md-0" method="POST" action="/search/">
+            {% csrf_token %}
+            <input class="form-control me-4 me-md-2" type="search" placeholder="search game" aria-label="Search" name="searched">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </form>
+
+        
+</div>
+<div class="container-fluid bg-dark text-light">
+    {% include 'tournaments/list.html' with object_list=object_list %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Cover Template · Bootstrap v5.2</title>
+
+
+
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+  .b-example-divider {
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+  }
+
+  .b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+  }
+
+  .bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+  }
+
+  .nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+  }
+
+  .nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  @media screen and (min-width : 768px) {
+    .t_photo {
+        width : 75%;
+      
+
+}
+  }
+  @media screen and (max-width : 768px) {
+    .spec_button {
+        font-size : 10px;
+      
+
+}     
+.t_photo {
+  width : 95%;
+}  
+  }
+</style>
+
+
+<!-- Custom styles for this template -->
+<link href="{% static 'css/cover.css' %}" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid t_photo mt-2" >
+  <div class="" style="text-align: center; position:relative;">
+    {% if object.image %}
+    <img src="{{object.image.url}}" class="img-fluid" alt="tournament-image" style="width: 100%;">
+    {% else %}
+    <img src="{% static 'images/default.jpg' %}" class="img-fluid" alt="tournament image" style="width: 100%;">
+    {% endif %}
+    {% if participation_status %}
+    <div class="participate-button d-none d-lg-inline-block" style="position: absolute; bottom:2%; left:50%; transform:translate(-50%, -50%);">
+      <a href="#" aria-disabled="true" class="btn btn-lg btn-success fw-bold border-white bg-red">Registered</a>
+      {% if request.user.is_staff %}
+      <a href="/tournament/{{object.id}}/delete" class="btn btn-lg btn-primary">Delete</a>
+
+      <a href="/tournament/{{object.id}}/registerations" class="btn btn-lg btn-primary">View Registerations</a></div>
+      {% endif %}
+      </div>
+    {% else %}
+      <div class="participate-button d-none d-lg-inline-block" style="position: absolute; bottom:2%; left:50%; transform:translate(-50%, -50%);">
+        <a href="/register/tournament/{{object.id}}" class="btn btn-lg btn-danger fw-bold border-white bg-red">Participate Now</a>
+        {% if request.user.is_staff %}
+        <a href="/tournament/{{object.id}}/registerations" class="btn btn-lg btn-primary">View Registerations</a>
+        <a href="/tournament/{{object.id}}/delete" class="btn btn-lg btn-secondary">Delete</a>
+        {% endif %}
+      </div>
+    {% endif %}
+    </div>
+    {% if participation_status %}
+    
+    <div class="participate-button d-lg-none text-center my-3 spec_button">
+      <a href="#" aria-disabled="true" class="btn btn btn-success fw-bold border-white bg-red">Registered</a>
+      {% if request.user.is_staff %}
+      <a href="/tournament/{{object.id}}/delete" class="btn btn-primary">Delete</a>
+
+      <a href="/tournament/{{object.id}}/registerations" class="btn btn-primary">View Registerations</a></div>
+      {% endif %}
+    {% else %}
+      <div class="participate-button d-lg-none spec_button">
+        <a href="/register/tournament/{{object.id}}" class="btn btn-danger fw-bold border-white bg-red">Participate Now</a>
+        {% if request.user.is_staff %}
+        <a href="/tournament/{{object.id}}/registerations" class="btn btn-primary">View Registerations</a>
+        <a href="/tournament/{{object.id}}/delete" class="btn btn-secondary">Delete</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  <div class="tournament-body p-md-3" style="background-color: rgba(0,0,0,0.2);">
+      <div class="nav nav-tabs mx-md-5 pl-md-5" id="nav-tab" role="tablist">
+        <button class="nav-link active link-secondary" id="details-tab-view" data-bs-toggle="tab" data-bs-target="#details-tab" type="button" role="tab" aria-controls="details-tab" aria-selected="true">DETAILS</button>
+        <button class="nav-link link-secondary" id="rules-tab-view" data-bs-toggle="tab" data-bs-target="#rules-tab" type="button" role="tab" aria-controls="rules-tab" aria-selected="false">RULES</button>
+        <button class="nav-link link-secondary" id="contact-tab-view" data-bs-toggle="tab" data-bs-target="#contact-tab" type="button" role="tab" aria-controls="contact-tab" aria-selected="false">CONTACT</button>
+        <button class="nav-link link-secondary" id="registeration-tab-view" data-bs-toggle="tab" data-bs-target="#registeration-tab" type="button" role="tab" aria-controls="registeration-tab" aria-selected="false">REGISTERATIONS</button>
+        <button class="nav-link disabled d-none d-md-block" id="schedule-tab-view" data-bs-toggle="tab" data-bs-target="#schedule-tab" type="button" role="tab" aria-controls="schedule-tab" aria-selected="false" aria-disabled="true">SCHEDULE</button>
+
+      </div>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="details-tab" role="tabpanel" aria-labelledby="details-view">
+        <div class="container my-3">
+
+          <h1>{{object.title}}</h1>
+          <h1>  </h1>
+          <p class="lead">{{object.content}}</p>
+          <div>
+          {% include 'tournaments/snippets/tournament_content.html' with tournament=object%}
+          </div>
+      </div>
+      </div>
+      <div class="tab-pane fade" id="rules-tab" role="tabpanel" aria-labelledby="rules-tab-view">
+        <p class=" text-light">
+
+          <p class = "pl-3">Tournament Format          </p>
+<div class="pl-3">
+  <p>            # Any kind of hacks and cheats are not allowed
+              </p>
+  <p>            # Bracket Style: Single Elimination
+              </p>
+  <p>            # Qualifying rounds Best of 1
+              </p>
+  <p>            # Final Match - Best of 3
+              </p>
+  <p>            # No Show Time: 10 minutes
+              </p></div>
+              <div class="pl-3">
+  <p>              - that miss the check-in timer due to a technical issue must contact an Admin directly through the Match Chat or Discord within 5 minutes after receiving a loss. After this additional 5 minutes grace period, the match will not be reset even if an Admin is contacted.
+              </p></div>
+  <p>
+              </p>
+  <p>          Participation Requirements
+              </p>
+              <div class="pl-3">
+  <p>
+              </p>
+  <p>            # Registration: Players must complete registration before the start of the tournament in order to participate in the tournament. It is recommended that players register well in advance of the start time of the tournament in the case of additional requirements and/or technical errors.
+              </p>
+  <p>            # In Game Name: Each player is responsible for submitting the correct in-game name to the Battlefy platform, and to update it in the case that it changes in game. If a player does not input the correct in game name, they may be disqualified from the tournament.
+              </p>
+  <p>            # Additional registration fields, if requested, are required for this tournament. Players who do not fill in all the registration fields may be disqualified from the event at the discretion of the tournament administration team.
+              </p>
+  </div><p></p>
+  <p>          Player Behavior and Names
+              </p>
+  <p></p>
+  <div class="pl-3">
+  <p>            # Players must not use racist, sexist, hate-speech, or otherwise inappropriate language or behavior.
+              </p>
+  <p>            # Player names must not include derogatory or inappropriate words.
+              </p>
+  <p>            # Unsportsmanlike behavior or player names may result in a forfeit of a Game/Match, or Ban from the tournament.
+              </p>
+  <p>            # Whether or not an incident violates the rules of the tournament is solely up to the discretion of the tournament administration team.
+              </p>
+  <p></p></div>
+
+  <p></p>
+  <p>          Disqualification
+              </p>
+              <div class="pl-3">  <p></p>
+  <p>            # The violation of any of the conditions in the rule sets may result in disqualification from the tournament as determined by the tournament administration team.
+              </p>
+  <p>            # Any form of cheating may result in a Ban from the tournament.
+              </p>
+  <p>            # Use of any third party software that performs multiple key presses (macros) or gives players extra information not normally provided by the game client are strictly forbidden.
+              </p>
+  <p>            # Cheating, use of restricted third party software or macro use accusations must be verified by a Tournament Administrator. A Match Issue must be submitted immediately, along with proof, screenshot or video, of the cheating. For all cheating claims, the burden of proof is on the accuser.
+
+        </p></div>
+      </div>
+      <div class="tab-pane fade" id="contact-tab" role="tabpanel" aria-labelledby="contact-tab-view">
+        <div class="container py-5">
+          <p></p><p>For any kind of query : help@gameon.com</p>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="schedule-tab" role="tabpanel" aria-labelledby="schedule-tab-view">...</div>
+      <div class="tab-pane fade" id="registeration-tab" role="tabpanel" aria-labelledby="registeration-tab-view">
+        {% if user.is_authenticated %}
+        {% if participation_status %}
+        <div class="container px-5 py-3">
+          <div class="row py-2">
+            <div class="col-6">
+              Registered On
+            </div>
+            <div class="col-6">
+              {{registered.timestamp}}
+            </div>
+          </div>
+          <div class="row py-2">
+            <div class="col-6">
+              Registered By
+            </div>
+            <div class="col-6">
+              {{registered.user}}
+            </div>
+          </div>
+          <div class="row py-2">
+            <div class="col-6">
+              Registeration Status
+            </div>
+            <div class="col-6">
+              {% if registered.status == '00' %}
+              Registered Successfully
+              {% else %}
+              Unsuccessful
+              {% endif %}
+            </div>
+          </div>
+          <div class="row py-2">
+            <div class="col-6">
+              Team Name
+            </div>
+            <div class="col-6">
+              {{registered.team_name}}
+            </div>
+          </div>
+          <div class="row py-2">
+            <div class="col-6">
+              Team Members
+            </div>
+            <div class="col-6">
+              {{registered.team_members}}
+            </div>
+          </div>
+      </div>
+    </div>
+
+        {% else %}
+        <div class="container py-3">
+          <p class="h4">You Have Not Participated in this Tournament.</p>
+          <p class="h6">To Participate Click on Participate button above. </p>
+        </div>
+        {% endif %}
+        {% else %}
+        <div class="container py-3">
+          <p class="h4">Please  <a href="/accounts/login/">login</a> to view Registeration Details</p>
+          <p class="h6"></p>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

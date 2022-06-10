@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+
+
+<title>Cover Template · Bootstrap v5.2</title>
+
+<!-- Custom styles for this template -->
+<link href="{% static 'css/home.css' %}" rel="stylesheet">
+<link href="{% static 'css/cover.css' %}" rel="stylesheet">
+
+
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container" style="height: 60%;">
+<div class="container my-auto pt-3 " style="height: 60%;" >
+
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+  </div>
+  <div class="carousel-inner" style="height: 60%;">
+    <div class="carousel-item active">
+      <img src="{% static 'images/valorant.jpg' %}" class=" d-block w-100" alt="..." >
+      <div class="carousel-caption d-none d-md-block">
+        {% if user.is_authenticated %}
+            <p class="lead text-dark">
+              <a href="/tournaments" class="btn btn-lg btn-danger fw-bold border-white bg-red">Participate Now</a>
+            </p>
+            {% else %}
+            <p class="lead text-dark">
+              <a href="/accounts/login" class="btn btn-lg btn-danger fw-bold border-white bg-red">Participate Now</a>
+            </p>
+            {% endif %}
+            <p>Show you gaming skill by competing with others</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/sixseige.jpg' %}" class=" d-block w-100" alt="..." >
+      <div class="carousel-caption d-none d-md-block">
+        {% if user.is_authenticated %}
+            <p class="lead text-dark">
+              <a href="/tournaments" class="btn btn-lg btn-danger fw-bold border-white bg-red">Participate Now</a>
+            </p>
+            {% else %}
+            <p class="lead text-dark">
+              <a href="/accounts/login" class="btn btn-lg btn-danger fw-bold border-white bg-red">Participate Now</a>
+            </p>
+            {% endif %}
+            <p>Show you gaming skill by competing with others</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/leagueOfLegends.jpg' %}" class="d-block w-100" alt="..." >
+      <div class="carousel-caption d-none d-md-block">
+        {% if user.is_authenticated %}
+            <p class="lead text-dark">
+              <a href="/tournaments" class="btn btn-lg btn-danger fw-bold border-white bg-red">Participate Now</a>
+            </p>
+            {% else %}
+            <p class="lead text-dark">
+              <a href="/accounts/login" class="btn btn-lg btn-danger fw-bold border-white bg-red">Participate Now</a>
+            </p>
+            {% endif %}
+            <p>Show you gaming skill by competing with others</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/bgmi.jpg' %}" class="d-block w-100" alt="..." >
+      <div class="carousel-caption d-none d-md-block">
+        {% if user.is_authenticated %}
+            <p class="lead text-dark">
+              <a href="/tournaments" class="btn btn-lg btn-danger fw-bold border-white bg-red">Participate Now</a>
+            </p>
+            {% else %}
+            <p class="lead text-dark">
+              <a href="/accounts/login" class="btn btn-lg btn-danger fw-bold border-white bg-red">Participate Now</a>
+            </p>
+            {% endif %}
+            <p>Show you gaming skill by competing with others</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/apex.jpg' %}" class="d-block w-100" alt="..." >
+      <div class="carousel-caption d-none d-md-block">
+        {% if user.is_authenticated %}
+            <p class="lead text-dark">
+              <a href="/tournaments" class="btn btn-lg btn-danger fw-bold border-white bg-red">Participate Now</a>
+            </p>
+            {% else %}
+            <p class="lead text-dark">
+              <a href="/accounts/login" class="btn btn-lg btn-danger fw-bold border-white bg-red">Participate Now</a>
+            </p>
+            {% endif %}
+            <p>Show you gaming skill by competing with others</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+
+<div class="d-block d-md-none pt-3 pb-1 my-3 mx-2 text-center rounded-3" style  = "background-color : rgba(15, 15, 15, 0.15)">
+  {% if user.is_authenticated %}
+      <p class="lead text-dark">
+        <a href="/tournaments" class="btn btn-lg btn-danger fw-bold border-white bg-red">Participate Now</a>
+      </p>
+      {% else %}
+      <p class="lead text-dark">
+        <a href="/accounts/login" class="btn btn-lg btn-danger fw-bold border-white bg-red">Participate Now</a>
+      </p>
+      {% endif %}
+      <h6 style = "font-size: 13px; font-weight: bold;">Show you gaming skill by competing with others</h6>
+</div>
+</div>
+
+{% endblock %}

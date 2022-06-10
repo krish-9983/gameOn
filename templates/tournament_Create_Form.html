@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container my-5 rounded-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="title text-center py-2"><p class="h3 fw-bold">Create Tournament</p></div>
+<form method='POST' action="/tournaments/create" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="errors text-danger">
+        <p>{{ form.non_field_errors }}</p>
+        <p>{{form.title.errors}}</p>
+        <p>{{form.content.errors}}</p>
+
+        <p>{{form.last_date.errors}}</p>
+
+        <p>{{form.tournament_date.errors}}</p>
+        
+        <p>{{form.game.errors}}</p>
+        
+        <p>{{form.team_size.errors}}</p>
+        
+        <p>{{form.entryleft.errors}}</p>
+        
+        <p>{{form.prize_pool.errors}}</p>
+        
+        <p>{{form.prize1.errors}}</p>
+        
+        <p>{{form.prize2.errors}}</p>
+        
+        <p>{{form.prize3.errors}}</p>
+        
+        <p>{{form.image.errors}}</p>
+        
+        <p>{{form.winner.errors}}</p>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="mb-3">
+
+                <label for="{{ form.title.id_for_label }}" class="form-label">Title</label>
+                {{form.title}}
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+
+                <label for="{{ form.content.id_for_label }}" class="form-label">Content</label>
+                {{form.content}}
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="mb-3">
+                <label for="{{ form.tournament_date.id_for_label }}" class="form-label">Tournament Date</label>
+                {{form.tournament_date}}
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="mb-3">
+                <label for="{{ form.last_date.id_for_label }}" class="form-label">Registeration End Date</label>
+                {{form.last_date}}
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="mb-3">
+                
+                <label for="{{ form.game.id_for_label }}" class="form-label">Game Name</label>
+                {{form.game}}
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="mb-3">
+
+                <label for="{{ form.team_size.id_for_label }}" class="form-label">Team Size</label>
+                {{form.team_size}}
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="mb-3">
+
+                <label for="{{ form.entryleft.id_for_label }}" class="form-label">Total Participants</label>
+                {{form.entryleft}}
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="mb-3">
+                
+                <label for="{{ form.prize_pool.id_for_label }}" class="form-label">Prize Pool</label>
+                {{form.prize_pool}}
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="mb-3">
+                
+                <label for="{{ form.prize1.id_for_label }}" class="form-label">1st Prize</label>
+                {{form.prize1}}
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="mb-3">
+                
+                <label for="{{ form.prize2.id_for_label }}" class="form-label">2nd Prize</label>
+                {{form.prize2}}
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="mb-3">
+                
+                <label for="{{ form.prize3.id_for_label }}" class="form-label">3rd Prize</label>
+                {{form.prize3}}
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                
+                <label for="{{ form.image.id_for_label }}" class="form-label">Tournament image</label>
+                {{form.image}}
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                
+                <label for="{{ form.winner.id_for_label }}" class="form-label">Winner</label>
+                {{form.winner}}
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+        </div>
+    <div class="d-flex justify-content-center my-3">
+    <button class="btn btn-primary btn-lg" type='submit '>{{buttonTitle}}</button>
+</div>
+</form>
+</div>
+</div>
+{% endblock %}
